@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><!--اتجاه النص من اليمين لليسار+لغة عربية-->
+
+<head>
+    <meta charset="UTF-8"><!--دعم العربية-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--يقيد تكبير الشاشة-->
+    <title>دليل الطالب الجامعي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!--مكتبة الايقونات-->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <!--تحسين الخط-->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- نموذج تسجيل الدخول-->
+
+<div id="loginModal" class="modal">
+    <div class="modal-content"> <!--محتوى النافذة-->
+        <span class="close-btn">&times;</span> <!--اغلاق النافذة-->
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm"> <!--نموذج تسجيل الدخول-->
+            <div class="form-group"> <!--خانة ادخال البريد الالكتروني-->
+                <label for="email">البريد الإلكتروني</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group"> <!--خانة كلمة المرور-->
+                <label for="password">كلمة المرور</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="btn-login">دخول</button> <!--زر ارسال النموذج-->
+            <p class="register-link">ليس لديك حساب؟ <a href="#" id="showRegister">سجل الآن</a></p>
+            <!--رابط التحويل الى نموذج التسجيل-->
+        </form>
+        <form id="registerForm" style="display:none;"> <!-- نموذج التسجيل الجديد -->
+            <div class="form-group">
+                <label for="newName">الاسم الكامل</label>
+                <input type="text" id="newName" required>
+            </div>
+            <div class="form-group">
+                <label for="newEmail">البريد الإلكتروني</label>
+                <input type="email" id="newEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">كلمة المرور</label>
+                <input type="password" id="newPassword" required>
+            </div>
+            <button type="submit" class="btn-register">تسجيل</button>
+            <p class="login-link">لديك حساب بالفعل؟ <a href="#" id="showLogin">سجل دخول</a></p>
+            <!--زر التسجيل ورابط العودة الى نموذج الدخول-->
+        </form>
+    </div>
+</div>
+
+<body>
+    <header>
+        <h1>دليل الطالب الجامعي</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">تبديل الوضع</button>
+        <nav> <!--شريط التنقل-->
+            <a href="#">الرئيسية</a>
+            <a href="#">عن الجامعة</a>
+            <a href="#">الخريطة</a>
+            <a href="#">تواصل بنا</a>
+            <!-- زر تسجيل الدخول مع أيقونة -->
+            <div class="login-container">
+                <button onclick="openLoginModal()" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>تسجيل الدخول</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- فديو الخلفية -->
+    <div class="video-container">
+        <video autoplay muted loop playsinline>
+            <source src="assets/uni-campus.mp4" type="video/mp4">
+            <!-- رسالة بديلة إذا لم يدعم المتصفح الفيديو -->
+            <p>متصفحك لا يدعم تشغيل الفيديو</p>
+        </video>
+
+        <!-- محتوى الصفحة فوق الفيديو -->
+        <div class="content-overlay">
+            <h1>جامعة الطائف</h1>
+            <p style="color:white;font-size:x-large;">مرحباً بكم في الدليل الجامعي</p>
+        </div>
+    </div>
+    <!--الجزء الرئيسي للخانات-->
+    <main>
+        <section class="cards">
+            <div class="card">
+                <i class="fas fa-graduation-cap card-icon support-icon"></i>
+                <div class="card-content">
+                    <h3>الدعم الأكاديمي</h3>
+                    <p>خدمات واستشارات أكاديمية</p>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-laptop card-icon system-icon"></i>
+                <div class="card-content">
+                    <h3>الأنظمة الإلكترونية</h3>
+                    <p>روابط الدخول والتطبيقات</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-edit card-icon registration-icon"></i>
+                <div class="card-content">
+                    <h3>تسجيل المقررات</h3>
+                    <p>دليل خطوة بخطوة لتسجيل المقررات</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-calculator card-icon calc-icon"></i>
+                <div class="card-content">
+                    <a href="gpa.php"><h3>حساب المعدل</h3></a>
+                    <p>حساب المعدل الفصلي والتراكمي بسهولة</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-book card-icon library-icon"></i>
+                <div class="card-content">
+                    <h3>المكتبة</h3>
+                    <p>الوصول إلى الكتب والمراجع الدراسية</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-users card-icon students-icon"></i>
+                <div class="card-content">
+                    <h3>المركز الطلابي</h3>
+                    <p>أنشطة وخدمات المركز الطلابي</p>
+                </div>
+            </div>
+            </div>
+        </section>
+
+
+
+    </main>
+    <button onclick="topFunction()" id="scrollTopBtn" title="أعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <footer>
+        <p>2025 © جميع الحقوق محفوظة - جامعة الطائف</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

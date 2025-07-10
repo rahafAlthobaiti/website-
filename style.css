@@ -1,0 +1,417 @@
+.video-container {
+    /*تنسيق خلفية الفديو والمحتوى عليه*/
+    position: relative;
+    /*يسمح بوضع عناصر داخلية بشكل مطلق*/
+    width: 100%;
+    height: 100vh;
+    /* ارتفاع كامل للشاشة */
+    overflow: hidden;
+    /*يخفي اي محتوى يخرج خارج الاطار*/
+}
+
+video {
+    /*وضع الفديو في وسط الشاشة */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    /*يخلي الفديو يغطي الخلفية بدون تشوية*/
+    z-index: -1;
+    /*يرسل الفديو للخلف حتى يظهر المحتوى فوقه*/
+}
+
+.content-overlay {
+    /*يغطي طبقة شفافة فوق الفديو لعرض النص بوضوح*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /*يوسط المحتوى عاموديا وافقيا*/
+    justify-content: center;
+    align-items: center;
+    color: rgb(253, 247, 247);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    /* طبقة شبه شفافة */
+}
+
+/*  نافذة التسجيل */
+
+.modal {
+    /*طبقة مظلمة تغطي الشاشة بالكامل*/
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    /*النافذة البيضاء اللي تحتوي على النموذج*/
+    background: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+    /*زر الاغلاق*/
+    float: left;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.form-group {
+    /*تنسيق المدخلات*/
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn-login,
+.btn-register {
+    /*زر الدخول والتسجيل*/
+    background: #414342;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.register-link,
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* تنسيقات زر تسجيل الدخول */
+.login-container {
+    margin-right: auto;
+    /* يدفع الزر لليمين */
+    margin-left: 20px;
+    /* مسافة من اليسار */
+}
+
+.login-btn {
+    /*يضبط مكان الزر يسار النافذة*/
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.login-btn:hover {
+    /*مظهر الزر عند الوقوف عليه */
+    background: #666667;
+    transform: translateY(-2px);
+    /*يرتفع قليلا*/
+}
+
+.login-btn i {
+    font-size: 14px;
+}
+
+:root {
+    /*تعريف اشياء ثابتة نحتاج نكررها كثير مثل الوان النصوص الثانوية وهكذا*/
+    --bg-color: #1c1c1e;
+    /*لمن نغير لون مايحتاج نغير بكل موقع راح نغير من موقع واحد*/
+    --header-bg: #111;
+    --card-bg: #2f3640;
+    --text-color: #eee;
+    --subtext-color: #bbb;
+    --accent-color: #525555;
+    --nav-link-color: #ccc;
+    --nav-link-hover: #f9fbfb;
+}
+
+/*لمن يتفعل الوضع الفاتح يتم استبدال القيم*/
+.light-mode {
+    --bg-color: #f8f9fa;
+    /* خلفية رمادية فاتحة جداً */
+    --header-bg: #d8fada;
+    /* اخضرفاتح  للهيدر */
+    --card-bg: #ffffff;
+    /* أبيض نقي للبطاقات */
+    --text-color: #212529;
+    /* أسود فاتح للنصوص */
+    --subtext-color: #6c757d;
+    /* رمادي للنصوص الثانوية */
+    --accent-color: #045604;
+    /* أخضر-أزرق فاتح (للازرار) */
+    --nav-link-color: #343a40;
+    /* رمادي غامق للروابط */
+    --nav-link-hover: #f9fbfb;
+    /* لون مميز عند التحويم */
+}
+
+
+body {
+    /*تنسيق الهيكل العام*/
+    font-family: 'Tajawal', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+
+}
+
+header {
+    background-color: var(--header-bg);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/*شريط التنقل الرئيسي الهيدر*/
+nav {
+    background-color: var(--header-bg);
+    /*لون الهيدر*/
+    padding: 10px;
+    /*يخلي المجتوى بعيد عن الحواف*/
+    text-align: center;
+    /*النص في المنتصف*/
+}
+
+/*روابط التنقل*/
+nav a {
+    color: var(--nav-link-color);
+    /*لون روابط التنقل*/
+    text-decoration: none;
+    /*يزيل الخط الموجود افتراضيا تحت الروابط*/
+    margin: 0 15px;
+    /*يمنع التصاق الروابط*/
+    font-size: 18px;
+    transition: color 0.3s;
+    /*يستغرق تغير اللون جزء من الثانية بدل التغير المفاجئ*/
+}
+
+/*يتغير لون الرابط عند المرور عليه*/
+nav a:hover {
+    color: var(--nav-link-hover);
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--accent-color);
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.theme-toggle:hover {
+    background: #666667;
+}
+
+/*يجعل البطاقات في صفين*/
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* كرتين في كل صف */
+    gap: 25px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.card {
+    /* تصميم البطاقات */
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    transition: transform 0.4s, box-shadow 0.4s, background 0.5s;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    /*تاثير دخول ناعم*/
+}
+
+/*لمن توقف على البطاقة راح تظهر تاثيرات ناعمة*/
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+/*تمنع الظهور المفاجئ للعناصر ظهور اكثر سلاسة للبطاقات*/
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/*ايقونات اللي جوت البطاقة*/
+.card-icon {
+    font-size: 40px;
+    margin-left: 20px;
+    transition: transform 0.3s, color 0.3s;
+}
+
+/*الايقونة تكبر عند تحريك الماوس*/
+.card:hover .card-icon {
+    transform: scale(1.2);
+}
+
+.support-icon {
+    color: #4cd137;
+}
+
+.system-icon {
+    color: #9c88ff;
+}
+
+.registration-icon {
+    color: #fbc531;
+}
+
+.calc-icon {
+    color: #e84118;
+}
+
+.students-icon {
+    color: #00cec9;
+}
+
+.library-icon {
+    color: #6c5ce7;
+}
+
+/* إضافة لون الأيقونة   */
+.card-content {
+    flex: 1;
+}
+h3 {
+    margin-top: 0;
+    font-size: 22px;
+}
+p {
+    margin: 5px 0 0;
+    color: var(--subtext-color);
+    font-size: 16px;
+}
+footer {
+    background-color: var(--header-bg);
+    color: var(--nav-link-color);
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+/*يظهر فقط عند التمرير للاسفل الدائرة اسفل الصفحة*/
+#scrollTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+#scrollTopBtn:hover {
+    /* لمن نضغط على ايقونة اعلى*/
+    background-color: #666667;
+}
+
+.gpa-calc {
+    max-width: 600px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gpa-calc form {
+    display: grid;
+    gap: 15px;
+}
+
+.gpa-calc .form-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.gpa-calc .form-group input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.gpa-calc button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.gpa-calc button:hover {
+    background-color: #666667;
+}
+
+.result {
+    margin-top: 20px;
+    background: var(--header-bg);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
